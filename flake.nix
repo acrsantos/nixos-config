@@ -30,7 +30,7 @@
         inherit username;
       };
       modules = [
-        ./hosts/default
+        ./hosts/laptop
         ./modules/core
       ];
     };

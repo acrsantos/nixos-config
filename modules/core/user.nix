@@ -24,7 +24,4 @@
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };
-  programs.steam = {
-    enable = true;
-  };
 }

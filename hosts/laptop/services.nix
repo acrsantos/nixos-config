@@ -6,7 +6,7 @@
     after = [ "network.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.iw}/bin/iw reg set US";  # Use full path for reliability
+      ExecStart = "${pkgs.iw}/bin/iw reg set US";
     };
   };
   services.xserver.xkb = {
