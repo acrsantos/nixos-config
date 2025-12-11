@@ -2,7 +2,7 @@
 {
   imports = [
     ./git.nix
-    ./neovim.nix
+    ./neovim
     ./kitty.nix
     ./firefox.nix
     ./hyprland.nix
