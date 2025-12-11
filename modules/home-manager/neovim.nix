@@ -1,11 +1,4 @@
-{
-lib,
-config,
-pkgs,
-inputs,
-...
-}:
-
+{ lib, config, pkgs, inputs, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -17,11 +10,12 @@ inputs,
       pkgs.stylua
       pkgs.ripgrep
       pkgs.clang
+      pkgs.tree-sitter
+      pkgs.vimPlugins.fzf-lua
     ];
     plugins = [ 
       pkgs.vimPlugins.nvim-treesitter.withAllGrammars 
       pkgs.vimPlugins.lazy-nvim
-      pkgs.vimPlugins.fzf-lua
     ];
   };
 }

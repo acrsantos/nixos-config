@@ -8,7 +8,7 @@
     extraSpecialArgs = { inherit inputs; };
     backupFileExtension = "backup";
     users.${username} = {
-      imports = [ ./../home ];
+      imports = [ ./../home-manager ];
       home = {
         username = "${username}";
         homeDirectory = "/home/${username}";
@@ -18,7 +18,7 @@
   };
   users.users.${username} = {
     isNormalUser = true;
-    description = "Main User";
+    description = "Adrian";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;

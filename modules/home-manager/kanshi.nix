@@ -11,7 +11,7 @@
           {
             criteria = "HDMI-A-1";
             status = "enable";
-            mode = "1920x1080@144Hz";
+            mode = "1920x1080@60Hz";
             position = "0,0";
           }
         ];

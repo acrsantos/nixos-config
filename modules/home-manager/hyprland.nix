@@ -1,12 +1,14 @@
 { inputs, pkgs, config, ... }:
 
 {
+  imports = [ inputs.dms.homeModules.dankMaterialShell.default];
+
   home.packages = with pkgs; [
       swww
       wl-clipboard
       hyprpolkitagent
       hyprland-qtutils
-      rofi-wayland
+      rofi
   ];
   home.pointerCursor = {
     gtk.enable = true;
@@ -79,7 +81,7 @@
       };
 
       animations = {
-        enabled = true;
+        enabled = false;
         bezier = [
           "linear, 0, 0, 1, 1"
             "md3_standard, 0.2, 0, 0, 1"
@@ -226,6 +228,13 @@
     extraConfig = ''
       monitor=,preferred,auto,auto
       monitor=Virtual-1,1920x1080@60,auto,1
+
+      workspace = w[tv1], gapsout:0, gapsin:0
+      workspace = f[1], gapsout:0, gapsin:0
+      windowrule = bordersize 0, floating:0, onworkspace:w[tv1]
+      windowrule = rounding 0, floating:0, onworkspace:w[tv1]
+      windowrule = bordersize 0, floating:0, onworkspace:f[1]
+      windowrule = rounding 0, floating:0, onworkspace:f[1]
     '';
   };
 }

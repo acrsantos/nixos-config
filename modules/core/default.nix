@@ -10,5 +10,6 @@
     ./nvidia.nix
     ./network.nix
     ./fonts.nix
+    ./sddm.nix
   ];
 }
