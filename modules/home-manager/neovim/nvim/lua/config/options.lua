@@ -1,9 +1,9 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 
-require("vim._extui").enable({
-  box = "cmd",
-})
+-- require("vim._extui").enable({
+--   box = "cmd",
+-- })
 
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
@@ -33,7 +33,7 @@ vim.o.exrc = true
 --   root_markers = { '.git' },
 -- })
 
-vim.o.guifont = "Berkeley Mono:h12"
+vim.o.guifont = "JetBrainsMono Nerd Font:h11"
 -- vim.diagnostic.config({
   -- virtual_lines = {
   --   current_line = true,

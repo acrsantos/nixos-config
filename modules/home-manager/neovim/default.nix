@@ -36,6 +36,7 @@ in
 
       nil
       nixfmt-rfc-style
+      statix
     ];
     plugins = with pkgs; [ 
       vimPlugins.nvim-treesitter.withAllGrammars 
@@ -46,5 +47,7 @@ in
   home.file.".config/nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink nvimConfigPath;
   };
+
+  programs.neovide.enable = true;
 }
 

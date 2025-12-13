@@ -150,7 +150,7 @@
         force_default_wallpaper = 0;
         enable_swallow = true;
         middle_click_paste = false;
-        swallow_regex = "^(com.mitchellh.ghostty)$";
+        swallow_regex = "^(kitty)$";
       };
 
       ecosystem = {
@@ -168,8 +168,10 @@
           "$modifier, E, exec, $fileManager"
           # "$modifier, O, exec, ghostty -e zsh -ic \"y; zsh\""
           "$modifier, A, togglefloating"
-          "$modifier, D, exec, rofi -show drun -config ~/.config/rofi/launchers/type-1/style-5.rasi"
-          "$modifier, P, pseudo, # dwindle"
+          # "$modifier, D, exec, rofi -show drun -config ~/.config/rofi/launchers/type-1/style-5.rasi"
+          "$modifier, D, exec, dms ipc spotlight open"
+          "$modifier, P, exec, dms ipc powermenu open"
+          # "$modifier, P, pseudo, # dwindle"
           "$modifier, S, togglesplit, # dwindle"
           "$modifier, I, exec, pkill hyprsunset || hyprsunset -t 3500"
           "$modifier, B, exec, pkill waybar || waybar"
@@ -187,8 +189,8 @@
           ", XF86AudioLowerVolume, exec, wp-volume.sh 0.02-"
           ", XF86AudioRaiseVolume, exec, wp-volume.sh 0.02+"
           ", XF86AudioMute, exec, pamixer --toggle-mute"
-          ", Print,    exec, hyprshot -m region --clipboard-only"
-          "SHIFT, Print,    exec, hyprshot -m output -o $HOME/Pictures/Screenshots/"
+          ", Print,    exec, dms screenshot --no-file"
+          "SHIFT, Print,    exec, dms screenshot --dir $HOME/Pictures/Screenshots/"
 
           "$modifier, 1, workspace, 1"
           "$modifier, 2, workspace, 2"
@@ -226,6 +228,7 @@
       ];
     };
     extraConfig = ''
+      exec-once = dms run &
       monitor=,preferred,auto,auto
       monitor=Virtual-1,1920x1080@60,auto,1
 
