@@ -9,6 +9,17 @@
       efiSupport = true;
       device = "nodev";
       useOSProber = true;
+      extraEntries = ''
+        menuentry "Reboot" {
+            reboot
+        }
+        menuentry "Poweroff" {
+            halt
+        }
+        menuentry "BIOS" {
+            fwsetup
+        }
+      '';
     };
   };
 }

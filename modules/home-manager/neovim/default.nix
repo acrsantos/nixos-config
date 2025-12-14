@@ -36,7 +36,6 @@ in
 
       nil
       nixfmt-rfc-style
-      statix
     ];
     plugins = with pkgs; [ 
       vimPlugins.nvim-treesitter.withAllGrammars 

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: 
+{ pkgs, inputs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
@@ -6,25 +6,25 @@
     firefox
     fzf
     git
-    hardinfo2 
+    hardinfo2
     iw
     ripgrep
-    kdePackages.isoimagewriter 
-    kdePackages.kcalc 
-    kdePackages.kcharselect 
-    kdePackages.kcolorchooser 
-    kdePackages.kolourpaint 
-    kdePackages.ksystemlog 
-    kdePackages.partitionmanager 
-    kdePackages.sddm-kcm 
-    kdiff3 
+    kdePackages.isoimagewriter
+    kdePackages.kcalc
+    kdePackages.kcharselect
+    kdePackages.kcolorchooser
+    kdePackages.kolourpaint
+    kdePackages.ksystemlog
+    kdePackages.partitionmanager
+    kdePackages.sddm-kcm
+    kdiff3
     lshw
     mpv
     os-prober
     pciutils
     qbittorrent
-    wayland-utils 
-    wl-clipboard 
+    wayland-utils
+    wl-clipboard
     inputs.neovim-nightly-overlay.packages.${system}.default
     oh-my-zsh
     zsh
@@ -36,6 +36,11 @@
     clang
     lazygit
     btop
+
+    rustc
+    cargo
+
+    statix
 
     obsidian
 

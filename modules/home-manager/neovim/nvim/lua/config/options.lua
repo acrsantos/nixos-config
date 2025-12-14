@@ -34,12 +34,11 @@ vim.o.exrc = true
 -- })
 
 vim.o.guifont = "JetBrainsMono Nerd Font:h11"
--- vim.diagnostic.config({
-  -- virtual_lines = {
-  --   current_line = true,
-  -- }
-  -- virtual_lines = true
--- })
+vim.diagnostic.config({
+  virtual_lines = {
+    current_line = true,
+  },
+})
 -- Plugins
 vim.g.snacks_animate = false
 
