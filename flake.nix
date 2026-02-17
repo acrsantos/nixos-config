@@ -14,6 +14,8 @@
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    musnix  = { url = "github:musnix/musnix"; };
   };
 
   outputs = inputs @ { 
@@ -32,6 +34,7 @@
         inherit username;
       };
       modules = [
+        inputs.musnix.nixosModules.musnix
         ./hosts/laptop
         ./modules/core
       ];

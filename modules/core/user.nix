@@ -19,7 +19,7 @@
   users.users.${username} = {
     isNormalUser = true;
     description = "Adrian";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;

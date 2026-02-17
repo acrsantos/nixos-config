@@ -17,6 +17,7 @@
     kdePackages.ksystemlog
     kdePackages.partitionmanager
     kdePackages.sddm-kcm
+    libreoffice-qt
     kdiff3
     lshw
     mpv
@@ -28,6 +29,11 @@
     inputs.neovim-nightly-overlay.packages.${system}.default
     oh-my-zsh
     zsh
+    reaper
+    wineWowPackages.yabridge
+    winetricks
+    yabridge
+    yabridgectl
 
     cmake
     gnumake
