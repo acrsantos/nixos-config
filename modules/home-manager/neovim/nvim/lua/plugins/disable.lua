@@ -19,10 +19,10 @@ return {
     "akinsho/bufferline.nvim",
     enabled = true,
   },
-  -- {
-  --   "nvim-lualine/lualine.nvim",
-  --   enabled = false,
-  -- },
+  {
+    "nvim-lualine/lualine.nvim",
+    enabled = false,
+  },
   {
     "catppuccin/nvim",
     enabled = false,

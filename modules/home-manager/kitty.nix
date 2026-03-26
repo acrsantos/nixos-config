@@ -6,6 +6,6 @@
     settings = {
       shell = "${pkgs.zsh}/bin/zsh";
     };
-    font.name = "Jetbrains Mono";
+    font.name = "TX-02";
   };
 }

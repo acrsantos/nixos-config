@@ -6,7 +6,6 @@
     ./kitty.nix
     ./firefox.nix
     ./hyprland.nix
-    ./kanshi.nix
     ./emacs.nix
     ./zsh.nix
     ./starship.nix

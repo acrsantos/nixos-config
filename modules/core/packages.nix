@@ -1,9 +1,10 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, nur, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     fastfetch
     firefox
+    nur.legacyPackages."x86_64-linux".repos.Ev357.helium
     fzf
     git
     hardinfo2
@@ -27,10 +28,11 @@
     wayland-utils
     wl-clipboard
     inputs.neovim-nightly-overlay.packages.${system}.default
+    zed-editor
     oh-my-zsh
     zsh
     reaper
-    wineWowPackages.yabridge
+    wineWow64Packages.yabridge
     winetricks
     yabridge
     yabridgectl

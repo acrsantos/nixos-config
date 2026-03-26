@@ -4,10 +4,13 @@
   programs.quickshell = {
     enable = true;
   };
-  programs.dankMaterialShell = {
+  programs.dank-material-shell = {
     enable = true;
     systemd = {
       restartIfChanged = true;
     };
+
+    enableSystemMonitoring = false;
+    enableCalendarEvents = false;
   };
 }

@@ -1,7 +1,7 @@
 { inputs, pkgs, config, ... }:
 
 {
-  imports = [ inputs.dms.homeModules.dankMaterialShell.default];
+  imports = [ inputs.dms.homeModules.dank-material-shell ];
 
   home.packages = with pkgs; [
       swww
@@ -12,7 +12,6 @@
   ];
   home.pointerCursor = {
     gtk.enable = true;
-# x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
     size = 16;
@@ -51,6 +50,8 @@
     settings = {
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
+
+      source = [ "~/.config/hypr/dms/outputs.conf" ];
 
       # env = [
       #   "NIXOS_OZONE_WL, 1"
@@ -229,15 +230,14 @@
     };
     extraConfig = ''
       exec-once = dms run &
-      monitor=,preferred,auto,auto
+      monitor=,preferred,auto,1
       monitor=Virtual-1,1920x1080@60,auto,1
 
+      source = ~/.config/hypr/dms/colors.conf
+      source = ~/.config/hypr/dms/layout.conf
+      source = ~/.config/hypr/dms/outputs.conf
       workspace = w[tv1], gapsout:0, gapsin:0
       workspace = f[1], gapsout:0, gapsin:0
-      windowrule = bordersize 0, floating:0, onworkspace:w[tv1]
-      windowrule = rounding 0, floating:0, onworkspace:w[tv1]
-      windowrule = bordersize 0, floating:0, onworkspace:f[1]
-      windowrule = rounding 0, floating:0, onworkspace:f[1]
     '';
   };
 }
