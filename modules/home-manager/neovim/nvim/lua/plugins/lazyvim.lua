@@ -5,7 +5,7 @@ return {
     lazy = false,
     opts = {
       dashboard = {
-        enabled = true,
+        enabled = false,
         preset = {
           header = [[
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
