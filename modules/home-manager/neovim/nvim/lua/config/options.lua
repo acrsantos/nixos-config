@@ -14,7 +14,6 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 10
 vim.opt.termsync = false
 vim.opt.fillchars = { eob = " " }
--- vim.opt.background = "light"
 vim.opt.winborder = "single"
 vim.opt.smartindent = true
 
@@ -33,7 +32,7 @@ vim.o.exrc = true
 --   root_markers = { '.git' },
 -- })
 
-vim.o.guifont = "JetBrainsMono Nerd Font:h11"
+vim.o.guifont = "TX-02:h11"
 vim.diagnostic.config({
   virtual_lines = {
     current_line = true,

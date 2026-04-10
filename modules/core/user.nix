@@ -21,7 +21,7 @@
     description = "Adrian";
     extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [];
-    shell = pkgs.zsh;
+    shell = pkgs.bash;
     ignoreShellProgramCheck = true;
   };
 }

@@ -48,14 +48,15 @@
       enable = true;
     };
     settings = {
-      "$terminal" = "kitty";
+      "$terminal" = "ghostty";
       "$fileManager" = "dolphin";
 
       source = [ "~/.config/hypr/dms/outputs.conf" ];
 
-      # env = [
+      env = [
       #   "NIXOS_OZONE_WL, 1"
-      #   "QT_QPA_PLATFORMTHEME, kde"
+        "QT_QPA_PLATFORMTHEME, qt6ct"
+        "QT_QPA_PLATFORMTHEME_QT6, qt6ct"
       #   "ELECTRON_OZONE_PLATFORM_HINT,wayland"
       #   "XDG_CURRENT_DESKTOP, Hyprland"
       #   "XDG_SESSION_TYPE, wayland"
@@ -65,8 +66,8 @@
       #   "XDG_TERMINAL_EMULATOR,kitty"
       #   "GDK_SCALE,1"
       #   "QT_SCALE_FACTOR,1"
-      #   "EDITOR,nvim"
-      # ];
+        "EDITOR,nvim"
+      ];
       input = {
         kb_layout = "us";
         repeat_delay = 200;
@@ -82,7 +83,7 @@
       };
 
       animations = {
-        enabled = false;
+        enabled = true;
         bezier = [
           "linear, 0, 0, 1, 1"
             "md3_standard, 0.2, 0, 0, 1"
@@ -100,44 +101,46 @@
             "md2, 0.4, 0, 0.2, 1 # use with .2s duration"
         ];
         animation = [
-          "windows, 1, 3, md3_decel, popin 60%"
-            "windowsIn, 1, 3, md3_decel, popin 60%"
-            "windowsOut, 1, 3, md3_accel, popin 60%"
-            "border, 1, 10, default"
-            "fade, 1, 3, md3_decel"
-            "layersIn, 1, 3, menu_decel, slide"
-            "layersOut, 1, 1.6, menu_accel"
-            "fadeLayersIn, 1, 2, menu_decel"
-            "fadeLayersOut, 1, 4.5, menu_accel"
-            "workspaces, 1, 7, menu_decel, slide"
+          "windows, 1, 2, md3_decel, slide"
+            "windowsIn, 1, 2, md3_decel, slide right"
+            "windowsOut, 1, 2, md3_accel, slide right"
+            "border, 1, 5, default"
+            "fade, 1, 2, md3_decel"
+            "layersIn, 1, 2, menu_decel, slide"
+            "layersOut, 1, 1, menu_accel"
+            "fadeLayersIn, 1, 1, menu_decel"
+            "fadeLayersOut, 1, 2.5, menu_accel"
+            "workspaces, 1, 3, menu_decel, slide"
         ];
       };
 
       general = {
-        gaps_in = 3;
-        gaps_out = 10;
+        gaps_in = 5;
+        gaps_out = 5;
         border_size = 1;
-        "col.active_border" = "rgba(8FCEF3ff)";
-        "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = true;
         allow_tearing = false;
-        layout = "master";
+        layout = "scrolling";
       };
 
       decoration = {
-        rounding = 10;
+        rounding = 5;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
         dim_inactive = false;
         dim_strength = 0.5;
 
         blur = {
-          enabled = true;
+          enabled = false;
           size = 10;
           passes = 2;
         };
         shadow = {
-          enabled = true;
+          enabled = false;
+          range = 30;
+          render_power = 5;
+          "offset" = "0 5";
+          "color" = "rgba(00000070)";
         };
       };
 
@@ -146,12 +149,19 @@
         new_on_top = true;
       };
 
+      scrolling = {
+        fullscreen_on_one_column = true;
+        column_width = 0.9;
+        direction = "right";
+      };
+
       misc = {
         disable_hyprland_logo = true;
+        disable_splash_rendering = true;
         force_default_wallpaper = 0;
         enable_swallow = true;
         middle_click_paste = false;
-        swallow_regex = "^(kitty)$";
+        swallow_regex = "^(com.mitchellh.ghostty)$";
       };
 
       ecosystem = {
@@ -161,37 +171,17 @@
 
       "$modifier" = "SUPER";
       bind = [
-        "$modifier, F, fullscreen, 1"
-
+          "$modifier, F, fullscreen, 1"
           "$modifier, Return, exec, $terminal"
           "$modifier, Q, killactive, "
           "$modifier, M, exit, "
           "$modifier, E, exec, $fileManager"
           # "$modifier, O, exec, ghostty -e zsh -ic \"y; zsh\""
-          "$modifier, A, togglefloating"
-          # "$modifier, D, exec, rofi -show drun -config ~/.config/rofi/launchers/type-1/style-5.rasi"
-          "$modifier, D, exec, dms ipc spotlight open"
-          "$modifier, P, exec, dms ipc powermenu open"
-          # "$modifier, P, pseudo, # dwindle"
-          "$modifier, S, togglesplit, # dwindle"
-          "$modifier, I, exec, pkill hyprsunset || hyprsunset -t 3500"
-          "$modifier, B, exec, pkill waybar || waybar"
 
-          "$modifier, W, layoutmsg, swapwithmaster"
-          "$modifier, H, movefocus, l"
-          "$modifier, L, movefocus, r"
-          "$modifier, J, layoutmsg, cyclenext"
-          "$modifier, K, layoutmsg, cycleprev"
-          "$modifier SHIFT, J, layoutmsg, swapnext"
-          "$modifier SHIFT, K, layoutmsg, swapprev"
-
-          ", XF86MonBrightnessUp, exec, brightnessctl set +10%"
-          ", XF86MonBrightnessDown, exec, brightnessctl set 10-%"
-          ", XF86AudioLowerVolume, exec, wp-volume.sh 0.02-"
-          ", XF86AudioRaiseVolume, exec, wp-volume.sh 0.02+"
-          ", XF86AudioMute, exec, pamixer --toggle-mute"
-          ", Print,    exec, dms screenshot --no-file"
-          "SHIFT, Print,    exec, dms screenshot --dir $HOME/Pictures/Screenshots/"
+          "$modifier, period, layoutmsg, move +col"
+          "$modifier, comma, layoutmsg, move -col"
+          "$modifier SHIFT, period, layoutmsg, swapcol r"
+          "$modifier SHIFT, comma, layoutmsg, swapcol l"
 
           "$modifier, 1, workspace, 1"
           "$modifier, 2, workspace, 2"
@@ -231,13 +221,48 @@
     extraConfig = ''
       exec-once = dms run &
       monitor=,preferred,auto,1
-      monitor=Virtual-1,1920x1080@60,auto,1
 
-      source = ~/.config/hypr/dms/colors.conf
-      source = ~/.config/hypr/dms/layout.conf
-      source = ~/.config/hypr/dms/outputs.conf
-      workspace = w[tv1], gapsout:0, gapsin:0
-      workspace = f[1], gapsout:0, gapsin:0
+      exec-once = dbus-update-activation-environment --systemd --all
+      exec-once = systemctl --user start hyprland-session.target
+
+
+      $fileManager=dolphin
+
+      # ==================
+      # WINDOW RULES
+      # ==================
+      windowrule = tile on, match:class ^(org\.wezfurlong\.wezterm)$
+
+      windowrule = rounding 12, match:class ^(org\.gnome\.)
+
+      windowrule = tile on, match:class ^(gnome-control-center)$
+      windowrule = tile on, match:class ^(pavucontrol)$
+      windowrule = tile on, match:class ^(nm-connection-editor)$
+
+      windowrule = float on, match:class ^(gnome-calculator)$
+      windowrule = float on, match:class ^(galculator)$
+      windowrule = float on, match:class ^(blueman-manager)$
+      windowrule = float on, match:class ^(org\.gnome\.Nautilus)$
+      windowrule = float on, match:class ^(xdg-desktop-portal)$
+
+      windowrule = no_initial_focus on, match:class ^(steam)$, match:title ^(notificationtoasts)
+      windowrule = pin on, match:class ^(steam)$, match:title ^(notificationtoasts)
+
+      windowrule = float on, match:class ^(firefox)$, match:title ^(Picture-in-Picture)$
+      windowrule = float on, match:class ^(zoom)$
+
+      # DMS windows floating by default
+      # ! Hyprland doesn't size these windows correctly so disabling by default here
+      # windowrule = float on, match:class ^(org.quickshell)$
+
+      layerrule = no_anim on, match:namespace ^(quickshell)$
+      layerrule = no_anim on, match:namespace ^dms:.*
+
+      source = ./dms/colors.conf
+      source = ./dms/outputs.conf
+      source = ./dms/layout.conf
+      source = ./dms/cursor.conf
+      source = ./dms/binds.conf
     '';
   };
 }

@@ -1,7 +1,7 @@
 { ... }: {
   programs.fzf = {
     enable = true;
-    enableZshIntegration = true;
+    enableBashIntegration = true;
     defaultOptions = [ 
       "--height 50%"
       "--layout=reverse-list"

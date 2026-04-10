@@ -18,6 +18,9 @@
     kdePackages.ksystemlog
     kdePackages.partitionmanager
     kdePackages.sddm-kcm
+    kdePackages.qt6ct
+    adw-gtk3
+    tela-icon-theme
     libreoffice-qt
     kdiff3
     lshw
@@ -44,6 +47,8 @@
     clang
     lazygit
     btop
+    tree-sitter
+
 
     rustc
     cargo
@@ -51,6 +56,7 @@
     statix
 
     obsidian
+    ghostty
 
     # archives
     zip
@@ -58,6 +64,8 @@
     unzip
     p7zip
     clang-tools
+
+    fd
 
     yazi
   ];

@@ -2,7 +2,7 @@
   programs.zsh = {
     enable = true;
     oh-my-zsh = {
-      enable = true;
+      # enable = true;
       plugins = [ "git" ];
     };
   };
