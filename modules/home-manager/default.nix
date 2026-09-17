@@ -11,6 +11,5 @@
     ./starship.nix
     ./fzf.nix
     ./tmux.nix
-    ./quickshell.nix
   ];
 }
