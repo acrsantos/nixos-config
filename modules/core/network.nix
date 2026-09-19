@@ -3,7 +3,14 @@
 {
   networking = {
     hostName = "nixos";
-    networkmanager.enable = true;
+    networkmanager = { 
+      enable = true;
+      wifi = { 
+        powersave = true;
+        # backend = "iwd";
+      };
+
+    };
     # wireless.enable = true;
     # proxy = {
     #   default = "http://user:password@proxy:port/";

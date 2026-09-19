@@ -1,8 +1,8 @@
 { lib, config, pkgs, inputs, ... }:
 
-# let
-#   nvimConfigPath = "${config.home.homeDirectory}/nixos-config/modules/home-manager/neovim/nvim";
-# in
+let
+  nvimConfigPath = "${config.home.homeDirectory}/nixos-config/modules/home-manager/neovim/nvim";
+in
 {
   programs.neovim = {
     enable = true;
@@ -12,6 +12,8 @@
     withPython3 = true;
     vimAlias = true;
     viAlias = true;
+
+    sideloadInitLua = true;
 
     extraPackages = with pkgs; [
       tree-sitter
@@ -37,15 +39,8 @@
       nil
       nixfmt
     ];
-    plugins = with pkgs; [ 
-      vimPlugins.nvim-treesitter.withAllGrammars 
-      vimPlugins.fzf-lua
-      vimPlugins.lazy-nvim
-    ];
   };
-  # home.file.".config/nvim" = {
-  #   source = config.lib.file.mkOutOfStoreSymlink nvimConfigPath;
-  # };
+  home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink nvimConfigPath;
 
   programs.neovide.enable = true;
 }

@@ -56,7 +56,6 @@
     statix
 
     obsidian
-    ghostty
 
     # archives
     zip

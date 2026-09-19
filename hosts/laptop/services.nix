@@ -5,15 +5,15 @@
   ...
 }:
 {
-  systemd.services.set-regdom = {
-    description = "Set Wi-Fi regulatory domain";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.iw}/bin/iw reg set US";
-    };
-  };
+  # systemd.services.set-regdom = {
+  #   description = "Set Wi-Fi regulatory domain";
+  #   wantedBy = [ "multi-user.target" ];
+  #   after = [ "network.target" ];
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     ExecStart = "${pkgs.iw}/bin/iw reg set US";
+  #   };
+  # };
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -82,24 +82,27 @@
     withUWSM = true;
   };
 
-  programs.dms-shell = {
+  programs.steam = {
     enable = true;
-
-    systemd = {
-      enable = false; # Systemd service for auto-start
-      restartIfChanged = true; # Auto-restart dms.service when dms-shell changes
-    };
-
-    # Core features
-    enableSystemMonitoring = true; # System monitoring widgets (dgop)
-    enableVPN = true; # VPN management widget
-    enableDynamicTheming = true; # Wallpaper-based theming (matugen)
-    enableAudioWavelength = true; # Audio visualizer (cava)
-    enableCalendarEvents = true; # Calendar integration (khal)
   };
 
-  nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
-  services.emacs.enable = true;
+  # programs.dms-shell = {
+  #   enable = true;
+  #
+  #   systemd = {
+  #     enable = false; # Systemd service for auto-start
+  #     restartIfChanged = true; # Auto-restart dms.service when dms-shell changes
+  #   };
+  #
+  #   # Core features
+  #   enableVPN = true; # VPN management widget
+  #   enableDynamicTheming = true; # Wallpaper-based theming (matugen)
+  #   enableAudioWavelength = true; # Audio visualizer (cava)
+  #   enableCalendarEvents = true; # Calendar integration (khal)
+  # };
+
+  # nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
+  # services.emacs.enable = true;
 
   # Enable the OpenSSH daemon.
   # openssh.enable = true;
