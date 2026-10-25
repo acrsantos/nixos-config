@@ -1,10 +1,14 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   background-package = pkgs.stdenvNoCC.mkDerivation {
     name = "custom-wallpaper";
-    src = ../../background.jpg;
-      dontUnpack = true;
+    src = ../../background2.jpg;
+    dontUnpack = true;
     installPhase = ''
       mkdir -p $out
       cp $src $out/background.jpg
@@ -21,11 +25,19 @@ in
     };
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
-     [General]
-     background = "${background-package}/background.jpg"
-     '')
+      [General]
+      background = "${background-package}/background.jpg"
+    '')
   ];
+
+  environment.etc."xdg/kscreenlockerrc".text = ''
+    [Greeter]
+    WallpaperPlugin=org.kde.image
+
+    [Greeter][Wallpaper][org.kde.image][General]
+    Image=file://${background-package}/background.jpg
+  '';
 
 }

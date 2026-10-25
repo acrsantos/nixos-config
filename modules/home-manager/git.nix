@@ -2,7 +2,7 @@
 {
     programs.git = {
       enable = true;
-      userName = "Adrian Christian Santos";
-      userEmail = "adrian.crsantos@gmail.com";
+      settings.user.name = "Adrian Christian Santos";
+      settings.user.email = "adrian.crsantos@gmail.com";
     };
 }

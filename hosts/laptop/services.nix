@@ -14,6 +14,13 @@
   #     ExecStart = "${pkgs.iw}/bin/iw reg set US";
   #   };
   # };
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      swtpm.enable = true;
+    };
+  };
+
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -77,13 +84,37 @@
     alsaSeq.enable = true;
   };
 
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-  };
+  programs = {
+    virt-manager.enable = true;
 
-  programs.steam = {
-    enable = true;
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+
+    steam = {
+      enable = true;
+    };
+
+    obs-studio = {
+      enable = true;
+
+      # optional Nvidia hardware acceleration
+      package = (
+        pkgs.obs-studio.override {
+          cudaSupport = true;
+        }
+      );
+
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+        obs-vaapi # optional AMD hardware acceleration
+        obs-gstreamer
+        obs-vkcapture
+      ];
+    };
   };
 
   # programs.dms-shell = {
